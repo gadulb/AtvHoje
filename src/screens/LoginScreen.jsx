@@ -20,15 +20,46 @@ export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  function handleRegister({ navigation}) {
+  // função para lidar com o login do Usuário
+  function handleLogin() {
     signInWithEmailAndPassword(auth, email, senha)
       .then((userCredencial) => {
         console.log("Usuário logado com sucesso!");
-        navigation.navigate("TabsNavigation");
+        navigation.navigate("IniciarJogo");
       })
       .catch((error) => {
         console.log("Erro ao criar usuário", error);
-        // ...
+        //código de erro
+        const errorCode = error.code;
+        if (email === "" || senha === "") {
+          console.log("Preencha todos os campos");
+          return;
+        }
+        if (senha.length < 6) {
+          console.log("A senha deve ter no mínimo 6 caracteres");
+          return;
+        }
+        if (!email.includes("@")) {
+          console.log("E-mail inválido");
+          return;
+        }
+        if (!email.includes(".")) {
+          console.log("E-mail inválido");
+          return;
+        }
+        if (email.includes(" ")) {
+          console.log("E-mail inválido");
+          return;
+        }
+        if (errorCode === "auth/invalid-email") {
+          console.log("E-mail inválido");
+        }
+        if (errorCode === "auth/user-not-found") {
+          console.log("Usuário não encontrado");
+        }
+        if (errorCode === "auth/wrong-password") {
+          console.log("Senha incorreta");
+        }
       });
   }
 
@@ -61,7 +92,7 @@ export default function LoginScreen({ navigation }) {
             style={styles.input}
           />
           <Button
-            onPress={handleRegister}
+            onPress={handleLogin}
             style={styles.botao}
             textColor="white"
           >
