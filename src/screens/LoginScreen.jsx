@@ -4,6 +4,7 @@ import { styles } from "../utils/styles";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { useState } from "react";
+
 /**
  * Tela de login
  * @auth Gabrieli Eduarda Lembeck
@@ -101,14 +102,14 @@ export default function LoginScreen({ navigation }) {
           <View style={styles.linha}>
             <View style={styles.coluna}>
               <Text>Não tem conta?</Text>
-              <Button textColor={'black'}>
-                <Text style={styles.botaoPreto} onPress={navigation.navigate("RegisterScreen")}>Cadastre-se!</Text>
+              <Button textColor={'black'} onPress={() => navigation.navigate("RegisterScreen")}>
+                <Text style={styles.botaoPreto}>Cadastre-se!</Text>
               </Button>
             </View>
             <View style={styles.coluna}>
               <Text>Esqueceu a senha?</Text>
-              <Button textColor={'black'}>
-                <Text style={styles.botaoPreto} onPress={navigation.navigate("HomeScreen")}>Recuperar Senha</Text>
+              <Button textColor={'black'} onPress={() => navigation.navigate("HomeScreen")}>
+                <Text style={styles.botaoPreto}>Recuperar Senha</Text>
               </Button>
             </View>
           </View>
