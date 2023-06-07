@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import RootNavigation from './src';
 
-export default function App() {
+
+/**
+ * @function App
+ * @author Adriano Ramos <adriano.ramos3208@gmail.com>
+ * @since 0.1.0
+ * 
+ * @description app função que
+ * realiza a navegação entre as telas
+ * @param {Object} navigation Objeto de navegação 
+ * @export {Function} App 
+ * @return {React.Component} 
+ */
+export default function App(){
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <RootNavigation/>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
